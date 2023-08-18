@@ -95,5 +95,6 @@ Data Augmentation 부분에서 가장 좋은 결과를 낸 모델의 경우 Gaus
 
 
 <img width="385" alt="스크린샷 2023-08-18 오후 9 50 23" src="https://github.com/Yang-jaemin/MultiLabel-classification/assets/108872973/e0174815-45b7-4a90-9f0c-fc6f06ce4506">
+
 ​											                    
 <데이터 증강 후>
