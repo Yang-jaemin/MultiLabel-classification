@@ -83,16 +83,15 @@ Data Augmentation 부분에서 가장 좋은 결과를 낸 모델의 경우 Gaus
 
 
 
-이를 통해 얼굴이 아닌 주변 배경은 제거를 하는 것이 불필요한 노이즈를 줄일 수 있을 것 같다고 판단했고
-
-같은 얼굴 부분에서 특징을 뽑아낸다면 모델을 분리해서 학습할 필요가 없다고 생각하여
-
- 하나의 모델로 학습하는 것이 적절하다고 판단함
+- 이를 통해 얼굴이 아닌 주변 배경은 제거를 하는 것이 불필요한 노이즈를 줄일 수 있을 것 같다고 판단했고 같은 얼굴 부분에서 특징을 뽑아낸다면 모델을 분리해서 학습할 필요가 없다고 생각하여 하나의 모델로 학습하는 것이 적절하다고 판단함
  <img width="396" alt="스크린샷 2023-08-18 오후 9 48 17" src="https://github.com/Yang-jaemin/MultiLabel-classification/assets/108872973/e5f147b1-ec25-40c1-8cb4-3e5977e67eef">
 - Rembg 라이브러리를 이용하여 모든 데이터의 배경을 제거했고 60세 데이터를 증강 시키고자 60세 얼굴의 코 위 부분을 잘라내어 다른 데이터에 합성시켜서 데이터를 증강시킴 -> 약간의 성능 향상이 있었음
 
 <img width="389" alt="스크린샷 2023-08-18 오후 9 49 40" src="https://github.com/Yang-jaemin/MultiLabel-classification/assets/108872973/1e5b54ad-2ce1-4492-9328-0d6fd5aebca0">
 
-​																					< 데이터 증강 전 >
+​																					< 데이터 증강 전 > 
+
+
+
 <img width="385" alt="스크린샷 2023-08-18 오후 9 50 23" src="https://github.com/Yang-jaemin/MultiLabel-classification/assets/108872973/e0174815-45b7-4a90-9f0c-fc6f06ce4506">
 ​											                    <데이터 증강 후>
