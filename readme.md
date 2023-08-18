@@ -9,7 +9,7 @@
   문제 정의
 
   1. 마스크 착용 여부 : 미착용, 올바르지 않은 착용, 정상 착용 2. 성별 : 남, 여
-  2. 연령대 : ~30, 30~60, 60~
+  2. 연령대 : 30이하, 30초과 60이하, 60초과
 
   마스크 착용 여부, 성별, 연령대 총 3, 2, 3가지 분류 문제를 분류하여 총 3 * 2 * 3 = 18 개의 클래스로 분류 예측 을 해결해야 합니다.
 
@@ -29,13 +29,13 @@
 
 ## EDA
 
-![스크린샷 2023-08-18 오후 9.16.24](/Users/yang/Desktop/github/Yang-jaemin.github.io/Yang-jaemin.github.io/images/스크린샷 2023-08-18 오후 9.16.24.png)
+<img width="831" alt="스크린샷 2023-08-18 오후 9 16 24" src="https://github.com/Yang-jaemin/MultiLabel-classification/assets/108872973/cfc35d07-d427-4ff1-8ee2-b1d6b5661ad0">
 
 - Female에 치중된 데이터
 - 10-20-50대의 데이터 많음, 30-40-60대의 데이터 적음
 - 40-50대에서 특히 두드러지는 성별 불균형
 
-<img src="/Users/yang/Desktop/github/Yang-jaemin.github.io/Yang-jaemin.github.io/images/스크린샷 2023-08-18 오후 9.17.28.png" alt="스크린샷 2023-08-18 오후 9.17.28" style="zoom:50%;" />
+<img width="328" alt="스크린샷 2023-08-18 오후 9 17 28" src="https://github.com/Yang-jaemin/MultiLabel-classification/assets/108872973/f10c2ee9-466e-41ee-a127-6c01a47ce331">
 
 - 19-20세에 치중된 30대 이하 데이터 -> 30대 이하 특징을 잡아내기에는 오히려 나쁘지 않을 것 같음
 - 매우 적은 데이터를 가지는 30대-40대와 50-60대에 치중된 데이터 -> 30~60대와 60대 이상을 구분하는 특징을 잡아내기에 어려움이 있을 것
@@ -62,9 +62,9 @@ Data Augmentation 부분에서 가장 좋은 결과를 낸 모델의 경우 Gaus
 
 -> 인물의 이미지라는 점에서 좌우 반전은 성능향상에 유효하다고 판단하였고, 주름이나 얼굴 조형 등의 특징 참조에 있어서 가우시안 노이즈 추가가 유효할 것이라고 판단하였음
 
-![스크린샷 2023-08-18 오후 9.39.58](/Users/yang/Desktop/github/Yang-jaemin.github.io/Yang-jaemin.github.io/images/스크린샷 2023-08-18 오후 9.39.58.png)
+<img width="722" alt="스크린샷 2023-08-18 오후 9 39 58" src="https://github.com/Yang-jaemin/MultiLabel-classification/assets/108872973/c8771081-bae8-48c1-9864-de79c7b1226a">
 
-![스크린샷 2023-08-18 오후 9.39.42](/Users/yang/Desktop/github/Yang-jaemin.github.io/Yang-jaemin.github.io/images/스크린샷 2023-08-18 오후 9.39.42.png)
+<img width="723" alt="스크린샷 2023-08-18 오후 9 39 42" src="https://github.com/Yang-jaemin/MultiLabel-classification/assets/108872973/985a8c91-ec1b-47c0-97be-413adea8dc1e">
 
 
 
@@ -74,7 +74,7 @@ Data Augmentation 부분에서 가장 좋은 결과를 낸 모델의 경우 Gaus
 
 - 의복 및 기타 신체부위를 통한 성능 개선 효과가 있는지 때조해보기 위해 Segmentation을 통해 의상 영역 역시 제외하여 얼굴 영역만을 추출하여 성능 개선을 시도하였으나 시간의 제약과 구현의 어려움으로 인해 실패함
 
-![스크린샷 2023-08-18 오후 9.43.47](/Users/yang/Desktop/github/Yang-jaemin.github.io/Yang-jaemin.github.io/images/스크린샷 2023-08-18 오후 9.43.47.png)
+<img width="761" alt="스크린샷 2023-08-18 오후 9 43 47" src="https://github.com/Yang-jaemin/MultiLabel-classification/assets/108872973/eeba54f7-e8dc-42e4-ab9f-7cc05769916f">
 
 - Model이 어떤 부분을 보고 예측하는지 알아보기 위해 GradCAM을 사용함
 - 마스크를 예측할 때 입 주변에서 가장 큰 반응을 보임
@@ -87,12 +87,10 @@ Data Augmentation 부분에서 가장 좋은 결과를 낸 모델의 경우 Gaus
 
 같은 얼굴 부분에서 특징을 뽑아낸다면 모델을 분리해서 학습할 필요가 없다고 생각하여
 
- 하나의 모델로 학습하는 것이 적절하다고 판단함![스크린샷 2023-08-18 오후 9.48.17](/Users/yang/Desktop/github/Yang-jaemin.github.io/Yang-jaemin.github.io/images/스크린샷 2023-08-18 오후 9.48.17.png)
-
+ 하나의 모델로 학습하는 것이 적절하다고 판단함<img width="396" alt="스크린샷 2023-08-18 오후 9 48 17" src="https://github.com/Yang-jaemin/MultiLabel-classification/assets/108872973/e5f147b1-ec25-40c1-8cb4-3e5977e67eef">
 - Rembg 라이브러리를 이용하여 모든 데이터의 배경을 제거했고 60세 데이터를 증강 시키고자 60세 얼굴의 코 위 부분을 잘라내어 다른 데이터에 합성시켜서 데이터를 증강시킴 -> 약간의 성능 향상이 있었음
 
-<img src="/Users/yang/Desktop/github/Yang-jaemin.github.io/Yang-jaemin.github.io/images/스크린샷 2023-08-18 오후 9.49.40.png" alt="스크린샷 2023-08-18 오후 9.49.40" style="zoom: 67%;" />
+<img width="389" alt="스크린샷 2023-08-18 오후 9 49 40" src="https://github.com/Yang-jaemin/MultiLabel-classification/assets/108872973/1e5b54ad-2ce1-4492-9328-0d6fd5aebca0">
 
-​																					< 데이터 증강 전 ><img src="/Users/yang/Desktop/github/Yang-jaemin.github.io/Yang-jaemin.github.io/images/스크린샷 2023-08-18 오후 9.50.23.png" alt="스크린샷 2023-08-18 오후 9.50.23" style="zoom: 67%;" />
-
+​																					< 데이터 증강 전 ><img width="385" alt="스크린샷 2023-08-18 오후 9 50 23" src="https://github.com/Yang-jaemin/MultiLabel-classification/assets/108872973/e0174815-45b7-4a90-9f0c-fc6f06ce4506">
 ​											<데이터 증강 후>
